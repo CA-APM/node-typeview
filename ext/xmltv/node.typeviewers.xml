@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TypeViewerSet namespace="brtm" version="2.0" xmlns="wily.typeviews" xmlns:its="http://www.w3.org/2005/11/its">
+    <!-- Component Definitions - Start -->
+    <ComponentDefinition id="node-graph">
+        <Panel columns="1" layout="GridLayout" rows="2">
+            <Panel columns="3" layout="GridLayout" rows="1">
+                <Graph relative-specifier=":Event Loop Ticks Per Interval">
+					<Title its:translate="yes">Event Loop Ticks Per Interval</Title>
+				</Graph>
+				<Graph relative-specifier=":Event Loop Average Tick Time \(ms\)">
+					<Title its:translate="yes">Event Loop Average Tick Time (ms)</Title>
+				</Graph>
+                <Graph relative-specifier=":HTTP Connection Count">
+					<Title its:translate="yes">HTTP Connection Count</Title>
+				</Graph>
+			</Panel>
+			<Panel columns="2" layout="GridLayout" rows="1">
+				<Graph relative-specifier=":CPU(.*)">
+					<Title its:translate="yes">CPU %</Title>
+				</Graph>
+				<Graph relative-specifier=":((.*)Heap(.*)|Resident Set Size)">
+					<Title its:translate="yes">Heap and RSS</Title>
+				</Graph>
+			</Panel>
+        </Panel>
+    </ComponentDefinition>
+    <ComponentDefinition id="detail-graph">
+        <Panel columns="1" layout="GridLayout" rows="3">
+            <Graph relative-specifier=":Average Response Time \(ms\)">
+				<Title its:translate="yes">Average Response Time (ms)</Title>
+			</Graph>
+			<Graph relative-specifier=":Responses Per Interval">
+				<Title its:translate="yes">Responses Per Interval</Title>
+			</Graph>
+			<Panel columns="3" layout="GridLayout" rows="1">
+				<Graph relative-specifier=":Concurrent Invocations">
+					<Title its:translate="yes">Concurrent Invocations</Title>
+				</Graph>
+                <Graph relative-specifier=":Errors Per Interval">
+					<Title its:translate="yes">Errors Per Interval</Title>
+				</Graph>
+				<Graph relative-specifier=":Stall Count">
+					<Title its:translate="yes">Stall Count</Title>
+				</Graph>
+			</Panel>
+        </Panel>
+    </ComponentDefinition>
+    <ComponentDefinition id="express-path-table">
+        <MetricDataTable show-bottom-graph="yes">
+            <Title>Express</Title>
+            <Column content-type="LastPrefixSegment" relative-width="3" segment-offset="1" sort="Ascending">
+                <Title its:translate="yes">Path</Title>
+            </Column>
+            <Column content-type="LastPrefixSegment" relative-width="3">
+                <Title its:translate="yes">Operation</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Average Response Time \(ms\)">
+                <Title its:translate="yes">R/T</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Concurrent Invocations">
+                <Title its:translate="yes">Concurrent</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Errors Per Interval">
+                <Title its:translate="yes">Errors</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Responses Per Interval">
+                <Title its:translate="yes">Responses</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Stall Count">
+                <Title its:translate="yes">Stalls</Title>
+            </Column>
+        </MetricDataTable>
+    </ComponentDefinition>
+    <ComponentDefinition id="express-op-table">
+        <MetricDataTable show-bottom-graph="yes">
+            <Title>Express</Title>
+            <Column content-type="LastPrefixSegment" relative-width="3" sort="Ascending">
+                <Title its:translate="yes">Operation</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Average Response Time \(ms\)">
+                <Title its:translate="yes">R/T</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Concurrent Invocations">
+                <Title its:translate="yes">Concurrent</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Errors Per Interval">
+                <Title its:translate="yes">Errors</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Responses Per Interval">
+                <Title its:translate="yes">Responses</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Stall Count">
+                <Title its:translate="yes">Stalls</Title>
+            </Column>
+        </MetricDataTable>
+    </ComponentDefinition>
+    <ComponentDefinition id="fragments-table">
+        <MetricDataTable show-bottom-graph="yes">
+            <Title>Express</Title>
+            <Column content-type="LastPrefixSegment" relative-width="3" sort="Ascending">
+                <Title its:translate="yes">Function</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Average Response Time \(ms\)">
+                <Title its:translate="yes">R/T</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Concurrent Invocations">
+                <Title its:translate="yes">Concurrent</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Errors Per Interval">
+                <Title its:translate="yes">Errors</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Responses Per Interval">
+                <Title its:translate="yes">Responses</Title>
+            </Column>
+            <Column content-type="NumericalValue" relative-specifier=":Stall Count">
+                <Title its:translate="yes">Stalls</Title>
+            </Column>
+        </MetricDataTable>
+    </ComponentDefinition>
+    <!-- Component Definitions - End -->
+    <TypeViewer id="node-runtime" supported-agents=".*"
+        supported-items-specifier="Node.js Runtime" tab-order="1">
+        <Title its:translate="yes">Node.js Runtime</Title>
+        <Component id="node-graph"/>
+	</TypeViewer>
+    <TypeViewer id="express-overview" supported-agents=".*"
+        supported-items-specifier="Express" tab-order="1">
+        <Title its:translate="yes">Overview</Title>
+        <Component id="express-path-table" specifier-prepend="\|[^\|]+\|[^\|]+"/>
+	</TypeViewer>
+    <TypeViewer id="express-operations" supported-agents=".*"
+        supported-items-specifier="Express\|[^\|]+" tab-order="1">
+        <Title its:translate="yes">Overview</Title>
+        <Component id="express-op-table" specifier-prepend="\|[^\|]+"/>
+	</TypeViewer>
+    <TypeViewer id="express-graph" supported-agents=".*"
+        supported-items-specifier="Express\|[^\|]+\|[^\|]+" tab-order="1">
+        <Title its:translate="yes">Overview</Title>
+        <Component id="detail-graph"/>
+	</TypeViewer>
+    <TypeViewer id="fragments-overview" supported-agents=".*"
+        supported-items-specifier="Fragments" tab-order="1">
+        <Title its:translate="yes">Overview</Title>
+        <Component id="fragments-table" specifier-prepend="\|[^\|]+\|[^\|]+"/>
+	</TypeViewer>
+    <TypeViewer id="fragments-detail" supported-agents=".*"
+        supported-items-specifier="Fragments\|[^\|]+" tab-order="1">
+        <Title its:translate="yes">Overview</Title>
+        <Component id="fragments-table" specifier-prepend="\|[^\|]+"/>
+	</TypeViewer>
+    <TypeViewer id="fragments-graph" supported-agents=".*"
+        supported-items-specifier="Fragments\|[^\|]+\|[^\|]+" tab-order="1">
+        <Title its:translate="yes">Overview</Title>
+        <Component id="detail-graph"/>
+	</TypeViewer>
+</TypeViewerSet>
