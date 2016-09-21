@@ -24,12 +24,23 @@ This document and associated tools are made available from CA Technologies as ex
 
 Although these utilities are unsupported, please let us know if you have any problems or questions by adding a comment to the CA APM Community Site area where the resource is located, so that the Author(s) may attempt to address the issue or question.
 
-Unless explicitly stated otherwise this field pack is only supported on the same platforms as the APM core agent. See [APM Compatibility Guide](http://www.ca.com/us/support/ca-support-online/product-content/status/compatibility-matrix/application-performance-management-compatibility-guide.aspx).
+Unless explicitly stated otherwise this extension is only supported on the same platforms as the APM core agent. See [APM Compatibility Guide](http://www.ca.com/us/support/ca-support-online/product-content/status/compatibility-matrix/application-performance-management-compatibility-guide.aspx).
+
+### Support URL
+https://github.com/CA-APM/node-typeview/issues
+
+# Contributing
+The [CA APM Community](https://communities.ca.com/community/ca-apm) is the primary means of interfacing with other users and with the CA APM product team.  The [developer subcommunity](https://communities.ca.com/community/ca-apm/ca-developer-apm) is where you can learn more about building APM-based assets, find code examples, and ask questions of other developers and the CA APM product team.
+
+If you wish to contribute to this or any other project, please refer to [easy instructions](https://communities.ca.com/docs/DOC-231150910) available on the CA APM Developer Community.
+
+## Categories
+Visualization
 
 
 # Change log
-Changes for each version of the field pack.
+Changes for each version of the extension.
 
 Version | Author | Comment
 --------|--------|--------
-1.0 | guenter.grossberger@ca.com | First version of the field pack.
+1.0 | guenter.grossberger@ca.com | First version of the extension.
